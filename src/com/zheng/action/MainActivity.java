@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
 	private ActionReceiver mActionReceiver;
 	private Intent mServiceIntent;
 	private IntentFilter mIntentFilter;
+	private View view;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

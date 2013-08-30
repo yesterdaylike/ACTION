@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+//Test,done tomrrow
 public class MonitorApp extends Service {
 	public static final String ACTION="com.zheng.action.APPS_CHANGED";
 	private ActivityManager am=null;
 
 	private String mLastTopActivity;
 	private String mCurTopActivity;
+
 
 	public String getCurRunningActivityPackageName() {
 		RunningTaskInfo info = am.getRunningTasks(1).get(0);
