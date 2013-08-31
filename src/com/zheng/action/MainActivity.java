@@ -10,23 +10,25 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-	private TextView mMessage;
+	private LinearLayout mTimeline;
 	private String mDate;
 
 	private ActionReceiver mActionReceiver;
 	private Intent mServiceIntent;
 	private IntentFilter mIntentFilter;
-	private View view;
+	private Context mContext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		mMessage = (TextView)findViewById(R.id.message);
+		mTimeline = (LinearLayout)findViewById(R.id.timeline);
 		
 		mActionReceiver = new ActionReceiver();
 		mIntentFilter = new IntentFilter(MonitorApp.ACTION);
@@ -34,6 +36,7 @@ public class MainActivity extends Activity {
 		
 		mServiceIntent = new Intent(this, MonitorApp.class);
 		startService(mServiceIntent);
+		mContext = this;
 	}
 
 
@@ -48,8 +51,10 @@ public class MainActivity extends Activity {
 				Set<String> Categories = intent.getCategories();
 				for (String string : Categories) {
 					Log.i("zhengwenhui", string);
-					mMessage.append(string);
-					mMessage.append("\n");
+					Button view = new Button(mContext);
+					//view.setBackgroundResource(android.R.color.darker_gray);
+					view.setText(string);
+					mTimeline.addView(view);
 				}
 				break;
 			case 1:
@@ -60,10 +65,15 @@ public class MainActivity extends Activity {
 				mDate = Calendar.getInstance().getTime().toString();
 				Log.i("zhengwenhui", app);
 				Log.i("zhengwenhui", mDate);
-				mMessage.append(mDate);
+				/*mMessage.append(mDate);
 				mMessage.append(" ");
 				mMessage.append(app);
-				mMessage.append("\n");
+				mMessage.append("\n");*/
+				
+				Button view = new Button(mContext);
+				//view.setBackgroundResource(android.R.color.darker_gray);
+				view.setText(app);
+				mTimeline.addView(view);
 				break;
 
 			default:

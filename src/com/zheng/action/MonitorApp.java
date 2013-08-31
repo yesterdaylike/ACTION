@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-//Test,done tomrrow
 public class MonitorApp extends Service {
 	public static final String ACTION="com.zheng.action.APPS_CHANGED";
 	private ActivityManager am=null;
@@ -43,7 +42,6 @@ public class MonitorApp extends Service {
 					try {
 						Thread.sleep(1000);//–›√ﬂ“ª∂Œ ±º‰
 					} catch (InterruptedException e) {
-
 						e.printStackTrace();
 					}
 
